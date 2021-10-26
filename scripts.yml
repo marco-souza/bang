@@ -1,0 +1,15 @@
+scripts:
+  allow:
+    - net
+    - read
+    - run
+    - env
+  start:
+    # start the app in `development` mode
+    cmd: land aleph dev
+  prod:
+    # start the app in `production` mode
+    cmd: land aleph start
+  static:
+    # build the app to a static site (SSG)
+    cmd: land aleph build && land serve dist
