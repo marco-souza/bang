@@ -12,7 +12,7 @@ export default function PlayersBoard() {
     <div>
       <div style={{ textAlign: 'center' }}>
         <button onClick={() => addPlayer("Doidinho do play")}>+</button>
-        <button title="Bang!"onClick={() => shotPlayer(all.find((p) => !isPlayerDead(p))!)}>
+        <button title="Bang!"onClick={() => shotPlayer(shuffle(all).find((p) => !isPlayerDead(p))!)}>
           *
         </button>
       </div>
@@ -42,3 +42,20 @@ export default function PlayersBoard() {
 // function PlayerView({}) {
 //   return
 // }
+
+function shuffle<T>(list: T[]): T[] {
+  let input = [...list]
+  const outputArray: T[] = []
+  while (input.length > 0) {
+    const [val, index] = sample(input)
+    outputArray.push(val)
+    input = input.filter((_, i) => i === index)
+  }
+  console.log(outputArray)
+  return outputArray
+}
+
+function sample<T>(list: Array<T>): [T, number] {
+  const randIndex = Math.round(Math.random() * list.length)
+  return [ list[randIndex]!, randIndex ]
+}
