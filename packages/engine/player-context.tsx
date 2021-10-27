@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { createCtx, ChildrenProps } from "@utils/react.tsx";
-import { Player, Character } from "./types.ts";
+import { ChildrenProps, createCtx } from "@utils/react.tsx";
+import { Character, Player } from "./types.ts";
 
 interface PlayerStates {
   readonly all: Player[];
@@ -12,9 +12,13 @@ interface PlayerActions {
   shotPlayer: (player: Player) => void;
 }
 
-const [usePlayerStates, PlayerStateProvider] = createCtx<PlayerStates>("PlayerStates");
-const [usePlayerActions, PlayerActionsProvider] = createCtx<PlayerActions>("PlayerActions");
-export { usePlayerStates, usePlayerActions };
+const [usePlayerStates, PlayerStateProvider] = createCtx<PlayerStates>(
+  "PlayerStates",
+);
+const [usePlayerActions, PlayerActionsProvider] = createCtx<PlayerActions>(
+  "PlayerActions",
+);
+export { usePlayerActions, usePlayerStates };
 
 export function PlayerProvider({ children }: ChildrenProps) {
   // TODO: add redux-toolkit
@@ -35,7 +39,6 @@ export function PlayerProvider({ children }: ChildrenProps) {
       });
     },
     shotPlayer(target: Player) {
-      console.log(target)
       setState({
         all: [...state.all.map(findAndShotMapper(target))],
       });

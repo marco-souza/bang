@@ -1,6 +1,17 @@
-import React, { Context, createContext, useContext, Provider, ReactNode, FC } from "react";
+import React, {
+  Context,
+  createContext,
+  FC,
+  Provider,
+  ReactNode,
+  useContext,
+} from "react";
 
-export type SafeContextResult<T> = [() => T, Provider<T | null>, Context<T | null>];
+export type SafeContextResult<T> = [
+  () => T,
+  Provider<T | null>,
+  Context<T | null>,
+];
 
 /**
  * A helper that creates a Context Consumer and Provider without having to declare a
@@ -12,14 +23,19 @@ export type SafeContextResult<T> = [() => T, Provider<T | null>, Context<T | nul
  * @param displayName Context name displayed in React Component's Tree
  * @returns A context consumer, the context provider and the context itself
  */
-export function createCtx<T>(displayName: Readonly<string>): SafeContextResult<T> {
+export function createCtx<T>(
+  displayName: Readonly<string>,
+): SafeContextResult<T> {
   const Ctx = createContext<T | null>(null);
   Ctx.displayName = displayName;
 
   function useCtx() {
     const value = useContext(Ctx);
-    if (value === null)
-      throw new Error(`Missing ${displayName} context provider upwards on this tree`);
+    if (value === null) {
+      throw new Error(
+        `Missing ${displayName} context provider upwards on this tree`,
+      );
+    }
 
     return value;
   }
