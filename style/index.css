@@ -1,4 +1,4 @@
-@import url('./reset.css');
+@import url("./reset.css");
 
 main {
   display: flex;
@@ -42,7 +42,7 @@ main {
 }
 
 .links span::after {
-  content: '·';
+  content: "·";
 }
 
 .links a {
@@ -87,7 +87,7 @@ main {
   text-align: center;
 }
 
-.counter button {
+button {
   display: line-flex;
   align-items: center;
   justify-content: center;
@@ -104,12 +104,12 @@ main {
   cursor: pointer;
 }
 
-.counter button:hover {
+button:hover {
   color: #000;
-  border-color:#ccc;
+  border-color: #ccc;
 }
 
-.counter button + button {
+button + button {
   margin-left: 9px;
 }
 

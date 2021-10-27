@@ -1,13 +1,17 @@
 import { useDeno } from 'aleph/react'
 import React from 'react'
 import Logo from '~/components/logo.tsx'
+import PlayersBoard from '~/components/PlayersBoard.tsx'
 import useCounter from '~/lib/useCounter.ts'
+
+import { withProviders } from '@utils/react.tsx'
+import { PlayerProvider } from '@packages/engine/player-context.tsx'
 
 export default function Home() {
   const [count, isSyncing, increase, decrease] = useCounter()
   const version = useDeno(() => Deno.version.deno)
 
-  return (
+  return withProviders(
     <div className="page">
       <head>
         <title>Hello World - Aleph.js</title>
@@ -28,14 +32,20 @@ export default function Home() {
         <span>Counter:</span>
         {isSyncing && (
           <em>...</em>
-        )}
+          )}
         {!isSyncing && (
           <strong>{count}</strong>
-        )}
+          )}
         <button onClick={decrease}>-</button>
         <button onClick={increase}>+</button>
       </div>
       <p className="copyinfo">Built by Aleph.js in Deno {version}</p>
-    </div>
+      <PlayersBoard />
+    </div>,
+    globalProviders,
   )
 }
+
+const globalProviders = [
+  PlayerProvider,
+]
