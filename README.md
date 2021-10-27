@@ -1,6 +1,6 @@
-# bang
+# Bang!
 
-This a work in progress implementation of `Bang!` game in JS.
+This is a work in progress implementation of `Bang!` game in JS.
 
 I'm using **Deno** with the following stack:
 
