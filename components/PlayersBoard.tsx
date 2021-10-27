@@ -10,10 +10,12 @@ export default function PlayersBoard() {
   const { addPlayer, shotPlayer } = usePlayerActions();
   return (
     <div>
-      <button onClick={() => addPlayer("Doidinho do play")}>+</button>
-      <button onClick={() => shotPlayer(all.find((p) => !isPlayerDead(p))!)}>
-        Bang!
-      </button>
+      <div style={{ textAlign: 'center' }}>
+        <button onClick={() => addPlayer("Doidinho do play")}>+</button>
+        <button title="Bang!"onClick={() => shotPlayer(all.find((p) => !isPlayerDead(p))!)}>
+          *
+        </button>
+      </div>
       <h2>
         Active player
       </h2>
