@@ -13,3 +13,5 @@ scripts:
   static:
     # build the app to a static site (SSG)
     cmd: land aleph build && land serve dist
+  fmt:
+    cmd: deno fmt .

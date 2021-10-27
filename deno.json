@@ -9,8 +9,24 @@
       "deno.ns",
       "deno.unstable"
     ],
-    "jsx": "react"
+    "jsx": "react",
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "@packages/*": ["./packages/*"],
+      "@utils/*": ["./packages/utils/*"]
+    }
   },
   "lint": {},
-  "format": {}
+  "format": {},
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["dist", ".aleph"]
 }
